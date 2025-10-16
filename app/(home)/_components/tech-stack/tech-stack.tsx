@@ -1,6 +1,7 @@
 import React from 'react'
-import { techCategories } from '@/lib/data/tech-stack-data'
+// import { techCategories } from '@/lib/data/tech-stack-data'
 import { TechCard } from './tech-card'
+import { techCategories } from '@/lib/data/tech-stack-data'
 
 export default function TechStack() {
   return (

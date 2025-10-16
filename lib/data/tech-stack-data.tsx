@@ -38,7 +38,12 @@ import {
   SiTrpc,
   SiExpo,
   SiFlutter,
+  SiSpring,
+  SiAmazon,
+  SiAwslambda 
 } from "react-icons/si"
+import { FaServer , FaDatabase  , FaJava } from "react-icons/fa";
+import { SiSelenium } from "react-icons/si";
 
 
 import { MdMobileScreenShare } from "react-icons/md";
@@ -112,6 +117,26 @@ export const techCategories: TechCategory[] = [
         icon: <SiTrpc className="text-blue-600 dark:text-blue-300 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "tRPC",
         description: "TypeScript-first API framework"
+      },
+      {
+        icon: <FaJava className="text-red-600 dark:text-red-300 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Java",
+        description: "Object-oriented programming language"
+      },
+      {
+        icon: <SiSpring className="text-green-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Spring Boot",
+        description: "Java framework for microservices"
+      },
+      {
+        icon: <SiSpring className="text-green-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Spring Security",
+        description: "Authentication and authorization framework"
+      },
+      {
+        icon: <div className="w-4 h-4 md:w-5 md:h-5 xl:w-6 xl:h-6 bg-orange-600 rounded flex items-center justify-center text-white text-xs font-bold">FX</div>,
+        name: "JavaFX",
+        description: "Java GUI framework for desktop applications"
       }
     ]
   },
@@ -161,9 +186,19 @@ export const techCategories: TechCategory[] = [
     title: "TESTING",
     skills: [
       {
-        icon: <SiJest className="text-red-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        icon: <SiJest className="text-red-600 dark:text-red-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "Jest",
         description: "JavaScript testing framework"
+      },
+      {
+        icon: <FaJava className="text-red-500 dark:text-red-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "JUnit",
+        description: "Java unit testing framework"
+      },
+      {
+        icon: <SiSelenium className="text-green-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Selenium",
+        description: "Web browser automation framework"
       }
     ]
   },
@@ -187,14 +222,9 @@ export const techCategories: TechCategory[] = [
         description: "Google's app development platform"
       },
       {
-        icon: <SiGithub className="text-gray-900 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        icon: <SiGithub className="text-gray-900 dark:text-gray-300 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "GitHub",
         description: "Git repository hosting service"
-      },
-      {
-        icon: <SiDocker className="text-blue-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
-        name: "Dokploy",
-        description: "Open Source Deployment platform"
       },
       {
         icon: <SiSupabase className="text-green-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
@@ -205,6 +235,26 @@ export const techCategories: TechCategory[] = [
         icon: <SiAppwrite className="text-pink-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "Appwrite",
         description: "Open source backend server"
+      },
+      {
+        icon: <FaServer className="text-orange-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "AWS EC2",
+        description: "Elastic Compute Cloud for virtual servers"
+      },
+      {
+        icon: <SiAwslambda className="text-orange-400 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "AWS Lambda",
+        description: "Serverless compute service"
+      },
+      {
+        icon: <SiAmazon className="text-orange-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "AWS S3",
+        description: "Simple Storage Service for object storage"
+      },
+      {
+        icon: <FaDatabase className="text-orange-700 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "AWS RDS",
+        description: "Relational Database Service"
       }
     ]
   },
@@ -274,7 +324,7 @@ export const techCategories: TechCategory[] = [
         description: "Pan-African payments company"
       },
       {
-        icon: <SiNextdotjs className="text-blue-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        icon: <SiNextdotjs className="text-blue-600 dark:text-blue-400 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "NextAuth",
         description: "Authentication for Next.js"
       }

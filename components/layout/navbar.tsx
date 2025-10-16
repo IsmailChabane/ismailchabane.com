@@ -17,7 +17,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className={`bg-card fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-8 h-16 rounded-[var(--radius)] border border-border px-4 py-3 transition-all duration-500 ${
+        <nav className={`bg-card fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-8 h-16 rounded-[var(--radius)] border border-border px-4 py-3 transition-all duration-300  ${
             isScrolled ? 'xl:max-w-6xl container xl:w-full' : 'container mx-auto w-full'
         }`}>
             {/* Logo */}
@@ -40,7 +40,11 @@ export default function Navbar() {
 
             {/* Right side - Let's Talk button and Theme Toggle */}
             <div className='flex items-center space-x-4 ml-auto'>
-                <ThemeToggleButton />
+                <ThemeToggleButton 
+                    variant="polygon"
+                    start="top-left"
+                    blur={false}
+                />
                 <Button className=' h-full bg-primary text-primary-foreground    hover:bg-primary/90'>
                     Let's Talk
                 </Button>
