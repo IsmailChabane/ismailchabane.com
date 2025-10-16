@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 import { ThemeProvider } from "@/providers/theme-provider"
 
 
@@ -37,8 +38,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          
           <div className="mt-[80px]">
+          <main className='container mx-auto bg-card rounded-[var(--radius)] border border-border  min-h-[calc(100svh-112px)] p-4    '>
+
           {children}
+          <Footer />
+          </main>
           </div>
         </ThemeProvider>
       </body>

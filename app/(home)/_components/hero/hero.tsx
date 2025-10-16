@@ -12,13 +12,13 @@ const Avatar = forwardRef<HTMLDivElement>((props, ref) => (
     className="flex justify-center mb-8 opacity-0"
     {...props}
   >
-    <div className="relative w-30 h-30 rounded-full overflow-hidden border-2 border-success shadow-lg">
+    <div className="relative w-35 h-35 rounded-full overflow-hidden border-2 border-success shadow-lg">
       <div className="absolute inset-0 flex justify-center items-center bg-black w-full h-full z-10 opacity-30"/>
       <Image
         src="/assets/ismailchabane.png"
         alt="Ismail Chabane Avatar"
         fill
-        className="object-cover"
+        className="object-cover object-[center_20%]"
         priority
       />
     </div>

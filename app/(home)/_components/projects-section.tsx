@@ -6,9 +6,9 @@ import { ArrowRight, Folder } from "lucide-react"
 import Image from "next/image"
 
 // Tag and Circle Component
-function TagAndCircle() {
+function TagAndCircle({ onClick }: { onClick: () => void }) {
   return (
-    <div className="relative flex items-center justify-center group cursor-pointer">
+    <div className="relative flex items-center justify-center group cursor-pointer" onClick={onClick}>
       {/* Rotated Black Tag */}
       <div className="absolute transition-all duration-400 group-hover:-top-12 group-hover:-right-13 group-hover:rotate-30 -top-11 -right-11 transform rotate-25 z-30">
         <div className="relative">
@@ -31,7 +31,11 @@ function TagAndCircle() {
   )
 }
 
-export default function ProjectsSection() {
+interface ProjectsSectionProps {
+  onScrollToProjects: () => void
+}
+
+export default function ProjectsSection({ onScrollToProjects }: ProjectsSectionProps) {
     // Project screenshots data
     const leftColumnItems = [
         { id: 1, imagePath: "/work/africkana/website.png" },
@@ -98,7 +102,7 @@ export default function ProjectsSection() {
 
              {/* Center Tag and Circle */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                 <TagAndCircle />
+                 <TagAndCircle onClick={onScrollToProjects} />
              </div>
 
             {/* Gradient overlays for fade effect */}

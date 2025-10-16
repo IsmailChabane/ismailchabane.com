@@ -49,7 +49,9 @@ export interface Project {
   description: string
   category: string[]
   thumbnail: string
+  thumbnailAlt: string
   gallery?: string[]
+  galleryAlt?: string[]
   skills: { name: string; icon: React.ReactNode }[]
   links: {
     live?: string
@@ -66,9 +68,14 @@ export const PROJECTS: Project[] = [
     description: "Progressive web app for African music streaming with offline capabilities, real-time analytics, and comprehensive admin dashboard for content management.",
     category: ["Music", "PWA", "Streaming"],
     thumbnail: "/work/africkana/website.png",
+    thumbnailAlt: "Ismail Chabane - Project - Africkana Radio - African music streaming platform with modern UI",
     gallery: [
       "/work/africkana/website.png",
       "/work/africkana/website2.png"
+    ],
+    galleryAlt: [
+      "Ismail Chabane - Project - Africkana Radio - Main dashboard interface showing music streaming features",
+      "Ismail Chabane - Project - Africkana Radio - Mobile responsive design with offline capabilities"
     ],
     skills: [
       { name: "Next.js", icon: <SiNextdotjs className="text-gray-900 dark:text-gray-300 h-4 w-4" /> },
@@ -89,8 +96,12 @@ export const PROJECTS: Project[] = [
     description: "Scalable online voting platform with microservices architecture, secure payment processing, and real-time analytics dashboard for award ceremonies.",
     category: ["Voting", "E-commerce", "Analytics"],
     thumbnail: "/work/koraawards/website.png",
+    thumbnailAlt: "Ismail Chabane - Project - Kora Awards Voting Platform - Online voting system with secure payment processing",
     gallery: [
       "/work/koraawards/website.png"
+    ],
+    galleryAlt: [
+      "Ismail Chabane - Project - Kora Awards Voting Platform - Voting interface with real-time analytics dashboard"
     ],
     skills: [
       { name: "Next.js", icon: <SiNextdotjs className="text-gray-900 dark:text-gray-300 h-4 w-4" /> },
@@ -111,8 +122,12 @@ export const PROJECTS: Project[] = [
     description: "AI-powered pump selection system with LangGraph integration, comprehensive admin dashboard, and real-time analytics for medical equipment optimization.",
     category: ["AI", "Healthcare", "Dashboard"],
     thumbnail: "/work/sofimedmaroc/website.png",
+    thumbnailAlt: "Ismail Chabane - Project - Sofimed Maroc AI System - AI-powered medical equipment selection platform",
     gallery: [
       "/work/sofimedmaroc/website.png"
+    ],
+    galleryAlt: [
+      "Ismail Chabane - Project - Sofimed Maroc AI System - AI dashboard with pump selection interface and analytics"
     ],
     skills: [
       { name: "Next.js", icon: <SiNextdotjs className="text-gray-900 dark:text-gray-300 h-4 w-4" /> },
@@ -133,8 +148,12 @@ export const PROJECTS: Project[] = [
     description: "Educational platform for professional development with interactive courses, progress tracking, and community features for skill enhancement.",
     category: ["Education", "Learning", "Community"],
     thumbnail: "/work/softskillsclub/website.png",
+    thumbnailAlt: "Ismail Chabane - Project - Soft Skills Club - Educational platform for professional development",
     gallery: [
       "/work/softskillsclub/website.png"
+    ],
+    galleryAlt: [
+      "Ismail Chabane - Project - Soft Skills Club - Learning platform interface with course progress tracking"
     ],
     skills: [
       { name: "Next.js", icon: <SiNextdotjs className="text-gray-900 dark:text-gray-300 h-4 w-4" /> },
@@ -155,9 +174,14 @@ export const PROJECTS: Project[] = [
     description: "Democratic voting platform with secure authentication, real-time results, and comprehensive audit trails for transparent elections.",
     category: ["Democracy", "Security", "Voting"],
     thumbnail: "/work/votemoi/website.png",
+    thumbnailAlt: "Ismail Chabane - Project - Vote Moi - Democratic voting platform with secure authentication",
     gallery: [
       "/work/votemoi/website.png",
       "/work/votemoi/website2.png"
+    ],
+    galleryAlt: [
+      "Ismail Chabane - Project - Vote Moi - Voting interface with real-time results and security features",
+      "Ismail Chabane - Project - Vote Moi - Mobile responsive voting platform with audit trails"
     ],
     skills: [
       { name: "Next.js", icon: <SiNextdotjs className="text-gray-900 dark:text-gray-300 h-4 w-4" /> },
@@ -178,8 +202,12 @@ export const PROJECTS: Project[] = [
     description: "Advanced PDF processing tool with OCR capabilities, document conversion, and batch processing features for document management workflows.",
     category: ["PDF", "OCR", "Automation"],
     thumbnail: "/work/pdforca/website.png",
+    thumbnailAlt: "Ismail Chabane - Project - PDF Orca - Advanced PDF processing tool with OCR capabilities",
     gallery: [
       "/work/pdforca/website.png"
+    ],
+    galleryAlt: [
+      "Ismail Chabane - Project - PDF Orca - Document processing interface with OCR and batch conversion features"
     ],
     skills: [
       { name: "Next.js", icon: <SiNextdotjs className="text-gray-900 dark:text-gray-300 h-4 w-4" /> },

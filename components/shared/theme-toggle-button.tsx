@@ -157,8 +157,8 @@ export const ThemeToggleButton = ({
     <button
       type="button"
       className={cn(
-        "size-10 rounded-full transition-all duration-300 active:scale-95 p-2 border",
-        isDark ? "bg-black text-white border-gray-700" : "bg-white text-black border-gray-300",
+        "size-10 rounded-[var(--radius)] transition-all duration-300 active:scale-95 p-2  cursor-pointer",
+        isDark ? "hover:bg-card-2 text-muted-foreground" : "hover:bg-card-2  text-muted-foreground",
         className,
       )}
       onClick={toggleTheme}

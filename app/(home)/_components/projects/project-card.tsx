@@ -18,6 +18,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const images = project.gallery && project.gallery.length > 1 
     ? project.gallery 
     : [project.thumbnail]
+  
+  // Determine alt texts for carousel
+  const altTexts = project.galleryAlt && project.galleryAlt.length > 1 
+    ? project.galleryAlt 
+    : [project.thumbnailAlt]
 
   // Determine primary button
   const hasPrimaryLink = project.links.live || project.links.github
@@ -60,7 +65,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <Image
               key={index}
               src={image}
-              alt={`${project.title} project screenshot ${index + 1}`}
+              alt={altTexts[index] || project.thumbnailAlt}
               fill
               className={`absolute inset-0 object-cover transition-opacity duration-700 ease-in-out ${
                 currentImageIndex === index ? 'opacity-100' : 'opacity-0'

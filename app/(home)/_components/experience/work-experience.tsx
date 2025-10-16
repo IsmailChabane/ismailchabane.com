@@ -7,7 +7,7 @@ import {
   GraduationCapIcon,
 } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { forwardRef } from "react";
 import ReactMarkdown from "react-markdown";
 import * as SiIcons from "react-icons/si";
 
@@ -92,21 +92,20 @@ export type ExperienceItemType = {
   isCurrentEmployer?: boolean;
 };
 
-export function WorkExperience({
-  className,
-  experiences,
-}: {
+export const WorkExperience = forwardRef<HTMLDivElement, {
   className?: string;
   experiences: ExperienceItemType[];
-}) {
+}>(({ className, experiences }, ref) => {
   return (
-    <div className={cn("bg-card-2 rounded-lg p-4 md:p-6 space-y-3 md:space-y-4", className)}>
+    <div ref={ref} className={cn("bg-card-2 rounded-lg p-4 md:p-6 space-y-3 md:space-y-4", className)}>
       {experiences.map((experience, index) => (
         <ExperienceItem key={experience.id} experience={experience} isFirst={index === 0} />
       ))}
     </div>
   );
-}
+});
+
+WorkExperience.displayName = "WorkExperience";
 
 export function ExperienceItem({
   experience,
