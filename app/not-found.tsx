@@ -107,6 +107,7 @@ export default function NotFound() {
       <AnimatePresence mode="wait">
         <motion.div 
           className="text-center"
+          //@ts-expect-error
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -115,12 +116,14 @@ export default function NotFound() {
           <div className="flex items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12">
             <motion.span 
               className="text-[80px] md:text-[120px] font-bold text-foreground opacity-70 select-none"
+              //@ts-expect-error
               variants={numberVariants}
               custom={-1}
             >
               4
             </motion.span>
             <motion.div
+              //@ts-expect-error
               variants={ghostVariants}
               whileHover="hover"
               animate={["visible", "floating"]}
@@ -137,6 +140,7 @@ export default function NotFound() {
             </motion.div>
             <motion.span 
               className="text-[80px] md:text-[120px] font-bold text-foreground opacity-70 select-none"
+              //@ts-expect-error
               variants={numberVariants}
               custom={1}
             >
@@ -146,6 +150,7 @@ export default function NotFound() {
           
           <motion.h1 
             className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6 opacity-70 select-none"
+            //@ts-expect-error
             variants={itemVariants}
           >
             Boo! Page missing!
@@ -153,12 +158,14 @@ export default function NotFound() {
           
           <motion.p 
             className="text-lg md:text-xl text-foreground mb-8 md:mb-12 opacity-50 select-none"
+            //@ts-expect-error
             variants={itemVariants}
           >
             Whoops! This page must be a ghost - it&apos;s not here!
           </motion.p>
 
           <motion.div 
+            //@ts-expect-error
             variants={itemVariants}
             whileHover={{ 
               scale: 1.05,

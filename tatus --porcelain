@@ -1,0 +1,25 @@
+warning: in the working copy of 'app/(home)/_components/experience/work-experience.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/(home)/_components/hero/hero.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/(home)/_components/projects-section.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/(home)/_components/tech-stack/tech-stack.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/(home)/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/globals.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/layout.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'components/layout/footer.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/data/tech-stack-data.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'next.config.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pnpm-lock.yaml', LF will be replaced by CRLF the next time Git touches it
+ .../_components/experience/work-experience.tsx     |   1 [32m+[m
+ app/(home)/_components/projects-section.tsx        |  16 [32m+[m[31m-[m
+ app/(home)/_components/projects/project-card.tsx   |  83 [32m++[m[31m--[m
+ app/(home)/_components/projects/projects-grid.tsx  |  26 [32m+[m[31m-[m
+ app/globals.css                                    |  31 [32m++[m
+ app/layout.tsx                                     |  10 [32m+[m[31m-[m
+ components/layout/footer.tsx                       | 132 [32m+[m[31m-----[m
+ components/layout/navbar.tsx                       |  49 [32m+[m[31m-[m
+ lib/data/tech-stack-data.tsx                       |  52 [32m++[m[31m-[m
+ next.config.ts                                     |  27 [32m+[m[31m-[m
+ package.json                                       |   7 [32m+[m
+ pnpm-lock.yaml                                     | 500 [32m+++++++++++++++++++++[m
+ 12 files changed, 732 insertions(+), 202 deletions(-)
