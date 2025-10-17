@@ -1,8 +1,7 @@
 "use client"
 
 import React from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Folder } from "lucide-react" 
+import { Folder } from "lucide-react" 
 import Image from "next/image"
 
 // Tag and Circle Component
@@ -51,16 +50,20 @@ export default function ProjectsSection({ onScrollToProjects }: ProjectsSectionP
         { id: 8, imagePath: "/work/votemoi/website2.png" },
     ]
 
+    // Combined items for mobile single column
+    const allItems = [...leftColumnItems, ...rightColumnItems]
+
     return (
         <div className="relative max-h-[90svh] bg-card-2 overflow-hidden rounded-[var(--radius)] border border-border">
             <div className="absolute inset-0 bg-background/70 pointer-events-none z-10" />
 
             {/* Scrolling Columns Container */}
-            <div className="flex gap-8 px-8 bg-background   py-2">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-8 px-8 bg-background   py-2">
                 {/* Left Column - Cards Scrolling Up */}
                 <div className="flex-1 overflow-hidden">
                     <div className="flex flex-col gap-8 animate-scroll-up">
-                        {[...leftColumnItems, ...leftColumnItems, ...leftColumnItems].map((item, index) => (
+                        {/* Mobile: Show all items combined, Desktop: Show only left items */}
+                        {[...allItems, ...allItems, ...allItems].map((item, index) => (
                             <div
                                 key={`left-${item.id}-${index}`}
                                 className="relative aspect-[16/9] rounded-[var(--radius)] overflow-hidden bg-card-2 border border-border shadow-2xl flex-shrink-0"
@@ -78,8 +81,8 @@ export default function ProjectsSection({ onScrollToProjects }: ProjectsSectionP
                     </div>
                 </div>
 
-                {/* Right Column - Cards Scrolling Down */}
-                <div className="flex-1 overflow-hidden">
+                {/* Right Column - Cards Scrolling Down - Hidden on mobile, shown on desktop */}
+                <div className="hidden md:block flex-1 overflow-hidden">
                     <div className="flex flex-col gap-8 animate-scroll-down">
                         {[...rightColumnItems, ...rightColumnItems, ...rightColumnItems].map((item, index) => (
                             <div
@@ -98,6 +101,7 @@ export default function ProjectsSection({ onScrollToProjects }: ProjectsSectionP
                         ))}
                     </div>
                 </div>
+
             </div>
 
              {/* Center Tag and Circle */}

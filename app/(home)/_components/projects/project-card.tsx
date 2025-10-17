@@ -3,14 +3,16 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink, Github, Info } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Project } from "@/lib/data/projects-data"
+import { AnimatedLink } from "@/components/shared/animated-link"
 
 interface ProjectCardProps {
   project: Project
+  showPlayVideo?: boolean
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, showPlayVideo = false }: ProjectCardProps) {
   const [isHovering, setIsHovering] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -24,13 +26,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
     ? project.galleryAlt 
     : [project.thumbnailAlt]
 
-  // Determine primary button
-  const hasPrimaryLink = project.links.live || project.links.github
-  const primaryButton = {
-    label: project.links.live ? "Live Site" : "GitHub",
-    link: project.links.live || project.links.github,
-    icon: project.links.live ? ArrowRight : Github
-  }
 
   const handleMouseEnter = () => {
     setIsHovering(true)
@@ -42,22 +37,27 @@ export function ProjectCard({ project }: ProjectCardProps) {
     setCurrentImageIndex(0) // Reset to first image
   }
 
-  // Auto-rotate images when multiple images exist
+  // Auto-rotate images when multiple images exist and user is hovering
   useEffect(() => {
-    if (images.length > 1) {
+    if (images.length > 1 && isHovering) {
       const interval = setInterval(() => {
         setCurrentImageIndex((prev) => (prev + 1) % images.length)
       }, 3000)
       return () => clearInterval(interval)
     }
-  }, [images.length])
+  }, [images.length, isHovering])
 
   return (
     <div className="group">
       <div 
-        className="relative rounded-[var(--radius)] overflow-hidden cursor-pointer"
+        className={`relative rounded-[var(--radius)] overflow-hidden ${!project.video ? 'cursor-pointer' : 'cursor-pointer'}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={() => {
+          if (!project.video) {
+            window.location.href = `/projects/${project.id}`
+          }
+        }}
       >
         {/* Project Images with Carousel */}
         <div className="relative aspect-[16/9] overflow-hidden">
@@ -67,6 +67,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
               src={image}
               alt={altTexts[index] || project.thumbnailAlt}
               fill
+              priority={index === 0}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className={`absolute inset-0 object-cover transition-opacity duration-700 ease-in-out ${
                 currentImageIndex === index ? 'opacity-100' : 'opacity-0'
               }`}
@@ -78,19 +80,35 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/40 to-transparent transition-opacity duration-300" />
           )}
 
-          {/* Play Button Overlay */}
+          {/* Overlay Content - Different based on video availability and showPlayVideo prop */}
           {isHovering && (
             <div className="absolute inset-0 flex items-center justify-center z-10">
-              <Button
-                className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 bg-white text-black font-regular w-36 py-3 rounded-sm cursor-pointer hover:bg-white/10 hover:backdrop-blur-sm hover:text-white hover:border-white hover:border"
-                onClick={() => {
-                  // Empty handler for now - will implement later
-                  console.log('Play clicked for', project.title)
-                }}
-              >
-                <ArrowRight className="w-6 h-6" />
-                Play Video
-              </Button>
+              {project.video && showPlayVideo ? (
+                // Show Play Video button when video exists and showPlayVideo is true
+                <Button
+                  className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 bg-white text-black font-regular w-36 py-3 rounded-sm cursor-pointer hover:bg-white/10 hover:backdrop-blur-sm hover:text-white hover:border-white hover:border"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    // Empty handler for now - will implement later
+                    console.log('Play clicked for', project.title)
+                  }}
+                >
+                  <ArrowRight className="w-6 h-6" />
+                  Play Video
+                </Button>
+              ) : !project.video ? (
+                // Show "View Project" when no video exists
+                <Button
+                  className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 bg-white text-black font-regular w-36 py-3 rounded-sm cursor-pointer hover:bg-white/10 hover:backdrop-blur-sm hover:text-white hover:border-white hover:border"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    window.location.href = `/projects/${project.id}`
+                  }}
+                >
+                  <ArrowRight className="w-6 h-6" />
+                  View Project
+                </Button>
+              ) : null}
             </div>
           )}
         </div>
@@ -102,20 +120,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.title}
         </h3>
         
-        {/* Category Tags on the right */}
-        {/* <div className="flex gap-2">
-          {project.category.slice(0, 2).map((cat, index) => (
-            <span
-              key={index}
-              className="px-2 py-1 bg-muted text-muted-foreground text-xs font-medium rounded"
-            >
-              {cat}
-            </span>
-          ))} */}
-          <h2 className="text-md font-semibold text-foreground underline flex items-center gap-2 cursor-pointer ">
+        {/* Learn More Link - Only show when not on home page or when video exists but showPlayVideo is false */}
+        {(!showPlayVideo || (project.video && !showPlayVideo)) && (
+          <AnimatedLink href={`/projects/${project.id}`} className="text-md font-semibold text-foreground flex items-center gap-2 cursor-pointer hover:text-muted-foreground transition-colors">
             Learn More
             <ArrowRight className="w-4 h-4" />
-          </h2>
+          </AnimatedLink>
+        )}
         </div>
       </div>
   )

@@ -222,6 +222,37 @@
   animation-play-state: paused;
 } */
 
+/* Enhanced gradient text animation with glow effect */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-amazing {
+  background: linear-gradient(
+    45deg,
+    #ff6b6b 0%,
+    #4ecdc4 25%,
+    #45b7d1 50%,
+    #96ceb4 75%,
+    #feca57 100%
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  position: relative;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

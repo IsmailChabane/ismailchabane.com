@@ -122,6 +122,7 @@ export function ExperienceItem({
     <Collapsible defaultOpen={isFirst} asChild>
       <div className="bg-card-3 border border-border-2 rounded-lg p-3 md:p-4 cursor-pointer hover:shadow-md transition-all duration-500 hover:ring-6 hover:ring-border/50 dark:hover:ring-card hover:-ring-offset-3
       outline outline-border 
+      data-[state=open]:ring-6 data-[state=open]:ring-border/50 dark:data-[state=open]:ring-card data-[state=open]:-ring-offset-3
       ">
         <CollapsibleTrigger className="group/experience w-full text-left cursor-pointer">
           {/* Mobile: Stacked layout, Desktop: Horizontal layout */}

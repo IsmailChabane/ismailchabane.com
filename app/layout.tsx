@@ -38,13 +38,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          
-          <div className="mt-[80px]">
-          <main className='container mx-auto bg-card rounded-[var(--radius)] border border-border  min-h-[calc(100svh-112px)] p-4    '>
 
-          {children}
-          <Footer />
-          </main>
+          <div className="mt-[80px]">
+            <main className='container mx-auto bg-card rounded-[var(--radius)] border border-border  min-h-[calc(100svh-112px)] p-4    '>
+
+              {children}
+              <Footer />
+            </main>
           </div>
         </ThemeProvider>
       </body>

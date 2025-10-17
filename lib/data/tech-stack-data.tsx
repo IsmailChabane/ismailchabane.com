@@ -40,9 +40,10 @@ import {
   SiFlutter,
   SiSpring,
   SiAmazon,
-  SiAwslambda 
+  SiAwslambda,
+  SiRedux
 } from "react-icons/si"
-import { FaServer , FaDatabase  , FaJava } from "react-icons/fa";
+import { FaServer, FaDatabase, FaJava } from "react-icons/fa";
 import { SiSelenium } from "react-icons/si";
 
 
@@ -99,9 +100,24 @@ export const techCategories: TechCategory[] = [
     title: "BACKEND",
     skills: [
       {
+        icon: <FaJava className="text-red-600 dark:text-red-400 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Java",
+        description: "Object-oriented programming language"
+      },
+      {
         icon: <SiNodedotjs className="text-green-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "Node.js",
         description: "JavaScript runtime built on Chrome's V8"
+      },
+      {
+        icon: <SiSpring className="text-green-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Spring Boot",
+        description: "Java framework for microservices"
+      },
+      {
+        icon: <SiSpring className="text-green-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Spring Security",
+        description: "Authentication and authorization framework"
       },
       {
         icon: <SiExpress className="text-gray-700 dark:text-gray-300 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
@@ -118,21 +134,8 @@ export const techCategories: TechCategory[] = [
         name: "tRPC",
         description: "TypeScript-first API framework"
       },
-      {
-        icon: <FaJava className="text-red-600 dark:text-red-300 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
-        name: "Java",
-        description: "Object-oriented programming language"
-      },
-      {
-        icon: <SiSpring className="text-green-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
-        name: "Spring Boot",
-        description: "Java framework for microservices"
-      },
-      {
-        icon: <SiSpring className="text-green-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
-        name: "Spring Security",
-        description: "Authentication and authorization framework"
-      },
+
+
       {
         icon: <div className="w-4 h-4 md:w-5 md:h-5 xl:w-6 xl:h-6 bg-orange-600 rounded flex items-center justify-center text-white text-xs font-bold">FX</div>,
         name: "JavaFX",
@@ -165,11 +168,6 @@ export const techCategories: TechCategory[] = [
         description: "Utility-first CSS framework"
       },
       {
-        icon: <SiJavascript className="text-yellow-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
-        name: "JavaScript",
-        description: "Dynamic programming language"
-      },
-      {
         icon: <SiFramer className="text-purple-600 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "Framer",
         description: "Interactive design and prototyping"
@@ -178,6 +176,16 @@ export const techCategories: TechCategory[] = [
         icon: <SiGreensock className="text-green-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
         name: "GSAP",
         description: "JavaScript animation library"
+      },
+      {
+        icon: <SiRedux className="text-purple-600 dark:text-purple-500 h-4 w-4 md:h-5 md:w-5 xl:h-6 xl:w-6" />,
+        name: "Redux",
+        description: "Predictable state container for JavaScript apps"
+      },
+      {
+        icon: <img src="https://zustand-demo.pmnd.rs/logo192.png" alt="Zustand" className="w-4 h-4 md:w-5 md:h-5 xl:w-6 xl:h-6" />,
+        name: "Zustand",
+        description: "Small, fast and scalable state management"
       }
     ]
   },

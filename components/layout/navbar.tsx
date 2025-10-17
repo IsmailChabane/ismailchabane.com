@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import { ThemeToggleButton } from '@/components/shared/theme-toggle-button'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link';
+import { Home, FolderOpen, Mail } from 'lucide-react';
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -17,38 +19,55 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className={`bg-card fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-8 h-16 rounded-[var(--radius)] border border-border px-4 py-3 transition-all duration-300  ${
-            isScrolled ? 'xl:max-w-6xl container xl:w-full' : 'container mx-auto w-full'
+        <nav className={`bg-card fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-4 md:gap-8 h-16 rounded-[var(--radius)] border border-border py-3 transition-all duration-300  ${
+            isScrolled ? 'xl:max-w-6xl xl:w-full px-4' : 'w-[calc(100%-1rem)] px-2 sm:container sm:px-4'
         }`}>
             {/* Logo */}
             <div className='flex items-center'>
-                <div className='text-2xl font-bold text-foreground'>IC</div>
+                <div className='text-3xl sm:text-2xl font-bold text-foreground'>IC</div>
             </div>
 
-            {/* Navigation Links */}
-            <div className='flex items-center space-x-8 mr-auto'>
-                <a href='/' className='text-muted-foreground hover:text-foreground transition-colors'>
+            {/* Desktop Navigation Links */}
+            <div className='hidden md:flex items-center space-x-8 mr-auto'>
+                <Link href='/' className='text-muted-foreground hover:text-foreground transition-colors'>
                     Home
-                </a>
-                <a href='/projects' className='text-muted-foreground hover:text-foreground transition-colors'>
+                </Link>
+                <Link href='/projects' className='text-muted-foreground hover:text-foreground transition-colors'>
                     Projects
-                </a>
-                <a href='/contact' className='text-muted-foreground hover:text-foreground transition-colors'>
+                </Link>
+                <Link href='/contact' className='text-muted-foreground hover:text-foreground transition-colors'>
                     Contact
-                </a>
+                </Link>
             </div>
 
-            {/* Right side - Let's Talk button and Theme Toggle */}
-            <div className='flex items-center space-x-4 ml-auto'>
+            {/* Mobile Navigation Links */}
+            <div className='flex md:hidden items-center space-x-2 mr-auto'>
+                <Link href='/' className='text-muted-foreground hover:text-foreground transition-colors p-2 rounded-md hover:bg-muted/50' title="Home">
+                    <Home className="w-6 h-6" />
+                </Link>
+                <Link href='/projects' className='text-muted-foreground hover:text-foreground transition-colors p-2 rounded-md hover:bg-muted/50' title="Projects">
+                    <FolderOpen className="w-6 h-6" />
+                </Link>
+                <Link href='/contact' className='text-muted-foreground hover:text-foreground transition-colors p-2 rounded-md hover:bg-muted/50' title="Contact">
+                    <Mail className="w-6 h-6" />
+                </Link>
+            </div>
+
+            {/* Right side - Theme Toggle and CTA buttons */}
+            <div className='flex items-center  ml-auto'>
                 <ThemeToggleButton 
                     variant="polygon"
                     start="top-left"
                     blur={false}
                 />
-                <Button className=' h-full bg-primary text-primary-foreground    hover:bg-primary/90'>
+                {/* Desktop: Let's Talk button */}
+                <Button className='hidden md:flex h-full bg-primary text-primary-foreground hover:bg-primary/90'>
                     Let's Talk
                 </Button>
-
+                {/* Mobile: Resume button */}
+                <Button className='flex md:hidden text-sm px-3 h-full bg-primary text-primary-foreground hover:bg-primary/90'>
+                    Resume
+                </Button>
             </div>
         </nav>
     )
