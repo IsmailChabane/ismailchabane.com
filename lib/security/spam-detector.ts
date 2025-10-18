@@ -17,5 +17,5 @@ export function isSpam(content: string): boolean {
 }
 
 export function isHoneypotFilled(website: string): boolean {
-  return website && website.trim() !== ''
+  return Boolean(website && website.trim() !== '')
 }
