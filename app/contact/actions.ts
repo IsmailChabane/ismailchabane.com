@@ -1,5 +1,11 @@
 'use server'
 
+import { contactFormSchema } from '@/lib/validation/contact-schema'
+import { checkRateLimit } from '@/lib/security/rate-limiter'
+import { isSpam, isHoneypotFilled } from '@/lib/security/spam-detector'
+import { sendContactEmail } from '@/lib/email/email-service'
+import { extractClientIP } from '@/lib/utils/ip-extractor'
+
 export interface ContactFormState {
   success?: boolean
   message?: string
@@ -12,6 +18,7 @@ export interface ContactFormState {
   }
 }
 
+
 export async function submitContactForm(
   prevState: ContactFormState,
   formData: FormData
@@ -22,54 +29,54 @@ export async function submitContactForm(
   const phone = formData.get('phone') as string
   const subject = formData.get('subject') as string
   const message = formData.get('message') as string
+  const website = formData.get('website') as string // Honeypot field
+
+  // Security checks
+  if (isHoneypotFilled(website)) {
+    return {
+      success: false,
+      message: 'Spam detected. Please contact me directly.'
+    }
+  }
+
+  const headers = new Headers()
+  const ip = extractClientIP(headers)
+
+  if (!checkRateLimit(ip)) {
+    return {
+      success: false,
+      message: 'Too many requests. Please try again later.'
+    }
+  }
+
+  const fullContent = `${name} ${email} ${subject} ${message}`.toLowerCase()
+  if (isSpam(fullContent)) {
+    return {
+      success: false,
+      message: 'Message appears to be spam. Please contact me directly.'
+    }
+  }
 
   // Validation
-  const errors: ContactFormState['errors'] = {}
+  const result = contactFormSchema.safeParse({
+    name,
+    email,
+    phone,
+    subject,
+    message
+  })
 
-  // Name validation
-  if (!name || name.trim().length === 0) {
-    errors.name = ['Name is required']
-  } else if (name.trim().length < 2) {
-    errors.name = ['Name must be at least 2 characters']
-  }
+  if (!result.success) {
+    const errors: ContactFormState['errors'] = {}
+    
+    result.error.issues.forEach((issue) => {
+      const field = issue.path[0] as keyof ContactFormState['errors']
+      if (field) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (errors as any)[field] = [issue.message]
+      }
+    })
 
-  // Email validation
-  if (!email || email.trim().length === 0) {
-    errors.email = ['Email is required']
-  } else {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      errors.email = ['Please enter a valid email address']
-    }
-  }
-
-  // Phone validation
-  if (!phone || phone.trim().length === 0) {
-    errors.phone = ['Phone number is required']
-  } else {
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/
-    const cleanPhone = phone.replace(/[\s\-\(\)]/g, '')
-    if (!phoneRegex.test(cleanPhone)) {
-      errors.phone = ['Please enter a valid phone number']
-    }
-  }
-
-  // Subject validation
-  if (!subject || subject.trim().length === 0) {
-    errors.subject = ['Subject is required']
-  } else if (subject.trim().length < 3) {
-    errors.subject = ['Subject must be at least 3 characters']
-  }
-
-  // Message validation
-  if (!message || message.trim().length === 0) {
-    errors.message = ['Message is required']
-  } else if (message.trim().length < 10) {
-    errors.message = ['Message must be at least 10 characters']
-  }
-
-  // If there are validation errors, return them
-  if (Object.keys(errors).length > 0) {
     return {
       success: false,
       message: 'Please fix the errors below',
@@ -77,12 +84,17 @@ export async function submitContactForm(
     }
   }
 
-  // TODO: Add email sending logic here
-  // For now, just simulate success
-  await new Promise(resolve => setTimeout(resolve, 1000))
-
-  return {
-    success: true,
-    message: 'Thank you for your message! I\'ll get back to you soon.'
+  // Send email
+  try {
+    await sendContactEmail(result.data)
+    return {
+      success: true,
+      message: 'Thank you for your message! I\'ll get back to you soon.'
+    }
+  } catch (error) {
+    return {
+      success: false,
+      message: 'Failed to send message. Please try again later.'
+    }
   }
 }

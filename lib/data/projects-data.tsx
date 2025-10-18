@@ -86,8 +86,7 @@ export const PROJECTS: Project[] = [
       { name: "Firebase", icon: <SiFirebase className="text-orange-500 h-4 w-4" /> }
     ],
     links: {
-      live: "https://africkana.com",
-      github: "https://github.com/yourusername/africkana"
+      live: "https://radio.africkana.com",
     }
   },
   {
@@ -112,8 +111,7 @@ export const PROJECTS: Project[] = [
       { name: "React", icon: <SiReact className="text-cyan-500 h-4 w-4" /> }
     ],
     links: {
-      live: "https://koraawards.com",
-      github: "https://github.com/yourusername/kora-awards"
+      live: "https://e-vote.koraawards.com",
     }
   },
   {
@@ -138,8 +136,7 @@ export const PROJECTS: Project[] = [
       { name: "Python", icon: <SiFastapi className="text-green-500 h-4 w-4" /> }
     ],
     links: {
-      live: "https://sofimedmaroc.com",
-      github: "https://github.com/yourusername/sofimed-ai"
+      live: "#",
     }
   },
   {
@@ -164,8 +161,7 @@ export const PROJECTS: Project[] = [
       { name: "Node.js", icon: <SiNodedotjs className="text-green-600 h-4 w-4" /> }
     ],
     links: {
-      live: "https://softskillsclub.com",
-      github: "https://github.com/yourusername/softskills-club"
+      live: "https://softskillsclub.com", 
     }
   },
   {
@@ -193,7 +189,6 @@ export const PROJECTS: Project[] = [
     ],
     links: {
       live: "https://votemoi.com",
-      github: "https://github.com/yourusername/vote-moi"
     }
   },
   {
@@ -218,8 +213,7 @@ export const PROJECTS: Project[] = [
       { name: "Docker", icon: <SiDocker className="text-blue-600 h-4 w-4" /> }
     ],
     links: {
-      live: "https://pdforca.com",
-      github: "https://github.com/yourusername/pdf-orca"
+      live: "#",
     }
   }
 ]

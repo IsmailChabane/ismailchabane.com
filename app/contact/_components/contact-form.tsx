@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useActionState, useEffect } from 'react'
+import React, { useActionState, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { submitContactForm, ContactFormState } from '../actions'
 import { toast } from 'sonner'
@@ -14,6 +14,35 @@ const initialState: ContactFormState = {
 
 export function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, initialState)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  })
+
+  // Handle form field changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  // Clear form on successful submission
+  useEffect(() => {
+    if (state.success) {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      })
+    }
+  }, [state.success])
 
   // Show toast notifications
   useEffect(() => {
@@ -34,6 +63,11 @@ export function ContactForm() {
       </div>
 
       <form action={formAction} className="space-y-6">
+        {/* Honeypot field - hidden from users but visible to bots */}
+        <div style={{ display: 'none' }}>
+          <label htmlFor="website">Website (leave empty)</label>
+          <input type="text" name="website" id="website" tabIndex={-1} autoComplete="off" />
+        </div>
         {/* Name Field */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -47,6 +81,8 @@ export function ContactForm() {
               id="name"
               name="name"
               type="text"
+              value={formData.name}
+              onChange={handleInputChange}
               placeholder="John Doe"
               disabled={isPending}
               className={`block w-full pl-10 pr-3 py-3 border ${
@@ -72,6 +108,8 @@ export function ContactForm() {
               id="email"
               name="email"
               type="email"
+              value={formData.email}
+              onChange={handleInputChange}
               placeholder="john@example.com"
               disabled={isPending}
               className={`block w-full pl-10 pr-3 py-3 border ${
@@ -87,7 +125,7 @@ export function ContactForm() {
         {/* Phone Field */}
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-            Phone Number
+            Phone Number <span className="text-muted-foreground">(optional)</span>
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -97,6 +135,8 @@ export function ContactForm() {
               id="phone"
               name="phone"
               type="tel"
+              value={formData.phone}
+              onChange={handleInputChange}
               placeholder="+1 (555) 123-4567"
               disabled={isPending}
               className={`block w-full pl-10 pr-3 py-3 border ${
@@ -122,6 +162,8 @@ export function ContactForm() {
               id="subject"
               name="subject"
               type="text"
+              value={formData.subject}
+              onChange={handleInputChange}
               placeholder="What's this about?"
               disabled={isPending}
               className={`block w-full pl-10 pr-3 py-3 border ${
@@ -146,6 +188,8 @@ export function ContactForm() {
             <textarea
               id="message"
               name="message"
+              value={formData.message}
+              onChange={handleInputChange}
               placeholder="Tell me about your project or idea..."
               rows={4}
               disabled={isPending}

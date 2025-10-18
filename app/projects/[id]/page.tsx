@@ -83,7 +83,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
         {/* Action Buttons - Below Media */}
         <div className="flex flex-wrap gap-6 justify-center mb-12">
-          {project.links.live && (
+          {project.links.live && project.links.live !== "#" && project.links.live.trim() !== "" && (
             <Button asChild size="lg" className="flex items-center gap-3 px-8 py-4 text-lg">
               <a href={project.links.live} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-5 h-5" />

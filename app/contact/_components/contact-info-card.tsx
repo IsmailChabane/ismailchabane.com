@@ -37,7 +37,7 @@ export function ContactInfoCard() {
     {
       icon: <Twitter className="w-5 h-5" />,
       label: 'Twitter',
-      href: 'https://twitter.com/ismailchabane'
+      href: 'https://x.com/Hx0dev'
     }
   ]
 

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { ThemeToggleButton } from '@/components/shared/theme-toggle-button'
 import { Button } from '@/components/ui/button'
+import { AnimatedLink } from '@/components/shared/animated-link'
 import Link from 'next/link';
 import { Home, FolderOpen, Mail } from 'lucide-react';
 
@@ -19,8 +20,8 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className={`bg-card fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-4 md:gap-8 h-16 rounded-[var(--radius)] border border-border py-3 transition-all duration-300  ${
-            isScrolled ? 'xl:max-w-6xl xl:w-full px-4' : 'w-[calc(100%-1rem)] px-2 sm:container sm:px-4'
+        <nav className={`bg-card fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-4 md:gap-8 h-16 rounded-[var(--radius)] border border-border py-3 transition-all duration-300 w-[calc(100%-1rem)] px-2 sm:container sm:px-4 ${
+            isScrolled ? 'xl:max-w-6xl xl:px-4' : ''
         }`}>
             {/* Logo */}
             <div className='flex items-center'>
@@ -29,15 +30,15 @@ export default function Navbar() {
 
             {/* Desktop Navigation Links */}
             <div className='hidden md:flex items-center space-x-8 mr-auto'>
-                <Link href='/' className='text-muted-foreground hover:text-foreground transition-colors'>
+                <AnimatedLink href='/' className='text-muted-foreground hover:text-foreground transition-colors'>
                     Home
-                </Link>
-                <Link href='/projects' className='text-muted-foreground hover:text-foreground transition-colors'>
+                </AnimatedLink>
+                <AnimatedLink href='/projects' className='text-muted-foreground hover:text-foreground transition-colors'>
                     Projects
-                </Link>
-                <Link href='/contact' className='text-muted-foreground hover:text-foreground transition-colors'>
+                </AnimatedLink>
+                <AnimatedLink href='/contact' className='text-muted-foreground hover:text-foreground transition-colors'>
                     Contact
-                </Link>
+                </AnimatedLink>
             </div>
 
             {/* Mobile Navigation Links */}
@@ -60,12 +61,8 @@ export default function Navbar() {
                     start="top-left"
                     blur={false}
                 />
-                {/* Desktop: Let's Talk button */}
-                <Button className='hidden md:flex h-full bg-primary text-primary-foreground hover:bg-primary/90'>
-                    Let's Talk
-                </Button>
-                {/* Mobile: Resume button */}
-                <Button className='flex md:hidden text-sm px-3 h-full bg-primary text-primary-foreground hover:bg-primary/90'>
+                {/* Resume button - visible on both desktop and mobile */}
+                <Button className='ml-2 h-full bg-primary text-primary-foreground hover:bg-primary/90'>
                     Resume
                 </Button>
             </div>
