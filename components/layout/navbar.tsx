@@ -62,7 +62,12 @@ export default function Navbar() {
                     blur={false}
                 />
                 {/* Resume button - visible on both desktop and mobile */}
-                <Button className='ml-2 h-full bg-primary text-primary-foreground hover:bg-primary/90'>
+                <Button 
+                    className='ml-2 h-full bg-primary text-primary-foreground hover:bg-primary/90'
+                    onClick={() => {
+                        window.open('/assets/ismail_chabane_resume.pdf', '_blank');
+                    }}
+                >
                     Resume
                 </Button>
             </div>

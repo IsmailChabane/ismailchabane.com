@@ -13,7 +13,7 @@ const Avatar = forwardRef<HTMLDivElement>((props, ref) => (
     {...props}
   >
     <div className="relative w-35 h-35 rounded-full overflow-hidden border-2 border-success shadow-lg">
-      <div className="absolute inset-0 flex justify-center items-center bg-black w-full h-full z-10 opacity-30"/>
+      <div className="absolute inset-0 flex justify-center items-center bg-black w-full h-full z-10 opacity-20"/>
       <Image
         src="/assets/ismailchabane.png"
         alt="Ismail Chabane Avatar"
@@ -89,7 +89,7 @@ const Description = forwardRef<HTMLDivElement>((props, ref) => (
   >
     <div className="space-y-1">
       <p className="text-xl md:text-2xl font-semibold text-foreground">
-        Software Developer & DevOps Engineer
+      Software Developer · React · Java
       </p>
       <p className="text-lg md:text-xl text-muted-foreground">
         Master&apos;s in Data Science & Big Data
@@ -103,7 +103,7 @@ const Description = forwardRef<HTMLDivElement>((props, ref) => (
         Mobile Development
       </span>
       <span className="px-3 py-1 bg-card-2 rounded-full border border-border">
-        Cloud Infrastructure
+        DevOps
       </span>
     </div>
   </div>
