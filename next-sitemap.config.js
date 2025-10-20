@@ -5,28 +5,15 @@ module.exports = {
     sitemapSize: 5000,
     additionalPaths: async () => {
       const extras = [
-        {
-          loc: '/',
-          images: [
-            {
-              loc: 'https://ismailchabane.com/assets/ismailchabane.png',
-              title: 'Ismail Chabane Profile Photo',
-            },
-          ],
-        },
+        { loc: '/', images: ['https://ismailchabane.com/assets/ismailchabane.png'] },
       ];
-  
       const projectImages = require('./lib/seo/projects-images.json');
       for (const p of projectImages) {
         extras.push({
           loc: `/projects/${p.id}`,
-          images: (p.images || []).map((img) => ({
-            loc: `https://ismailchabane.com${img.src}`,
-            title: img.alt,
-          })),
+          images: (p.images || []).map(img => `https://ismailchabane.com${img.src}`),
         });
       }
-  
       return extras;
     },
   };
