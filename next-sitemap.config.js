@@ -3,10 +3,8 @@ module.exports = {
   siteUrl: 'https://ismailchabane.com',
   generateRobotsTxt: true,
   sitemapSize: 5000,
-  transform: async (config, url) => {
-    return { ...config, loc: url };
-  },
-  additionalPaths: async (config) => {
+  // Return plain field objects; next-sitemap will handle XML generation
+  additionalPaths: async () => {
     const extras = [
       {
         loc: '/',
@@ -19,7 +17,6 @@ module.exports = {
       },
     ];
 
-    // Load project image mapping for image sitemap entries
     const projectImages = require('./lib/seo/projects-images.json');
     for (const p of projectImages) {
       extras.push({
@@ -31,9 +28,7 @@ module.exports = {
       });
     }
 
-    return extras.map((e) =>
-      config.transform(config, e.loc).then((base) => ({ ...base, images: e.images }))
-    );
+    return extras;
   },
 };
 
