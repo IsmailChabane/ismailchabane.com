@@ -1,0 +1,42 @@
+[
+  {
+    "id": "africkana",
+    "images": [
+      { "src": "/work/africkana/website.png", "alt": "Africkana - Main dashboard" },
+      { "src": "/work/africkana/website2.png", "alt": "Africkana - Mobile responsive" }
+    ]
+  },
+  {
+    "id": "kora-awards",
+    "images": [
+      { "src": "/work/koraawards/website.png", "alt": "Kora Awards - Voting platform" }
+    ]
+  },
+  {
+    "id": "sofimed-maroc",
+    "images": [
+      { "src": "/work/sofimedmaroc/website.png", "alt": "Sofimed Maroc - AI system" }
+    ]
+  },
+  {
+    "id": "softskills-club",
+    "images": [
+      { "src": "/work/softskillsclub/website.png", "alt": "Soft Skills Club - Platform" }
+    ]
+  },
+  {
+    "id": "vote-moi",
+    "images": [
+      { "src": "/work/votemoi/website.png", "alt": "Vote Moi - Voting interface" },
+      { "src": "/work/votemoi/website2.png", "alt": "Vote Moi - Mobile responsive" }
+    ]
+  },
+  {
+    "id": "pdf-orca",
+    "images": [
+      { "src": "/work/pdforca/website.png", "alt": "PDF Orca - Document processing" }
+    ]
+  }
+]
+
+

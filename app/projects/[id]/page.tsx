@@ -8,6 +8,7 @@ import { SectionSeparator } from "@/components/shared/section-separator"
 import { PROJECTS } from "@/lib/data/projects-data"
 import { getMDXContent } from "@/lib/mdx-utils"
 import Link from "next/link"
+import Script from "next/script"
 
 interface ProjectDetailPageProps {
   params: {
@@ -19,6 +20,32 @@ export async function generateStaticParams() {
   return PROJECTS.map((project) => ({
     id: project.id,
   }))
+}
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { id } = await params
+  const project = PROJECTS.find((p) => p.id === id)
+  if (!project) return {}
+  const galleryOrThumb = project.gallery && project.gallery.length > 0 ? project.gallery : [project.thumbnail]
+  const absolute = (path: string) => `https://ismailchabane.com${path}`
+  return {
+    metadataBase: new URL('https://ismailchabane.com'),
+    title: project.title,
+    description: project.description,
+    alternates: { canonical: `/projects/${id}` },
+    openGraph: {
+      url: `/projects/${id}`,
+      title: project.title,
+      description: project.description,
+      images: galleryOrThumb.map((src) => ({ url: absolute(src) })),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.title,
+      description: project.description,
+      images: galleryOrThumb.map((src) => absolute(src)),
+    },
+  }
 }
 
 export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
@@ -48,6 +75,14 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="w-full">
+        <Script id="project-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          name: project.title,
+          description: project.description,
+          image: images.map((src) => `https://ismailchabane.com${src}`),
+          url: `https://ismailchabane.com/projects/${id}`,
+        }) }} />
         {/* Back Navigation */}
         <div className="mb-8">
           <Link href="/projects">
