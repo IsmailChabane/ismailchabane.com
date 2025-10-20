@@ -10,8 +10,8 @@ module.exports = {
         loc: '/',
         images: [
           {
-            loc: 'https://ismailchabane.com/assets/ismailchabane.png',
-            title: 'Ismail Chabane Profile Photo',
+            url: 'https://ismailchabane.com/assets/ismailchabane.png',
+            caption: 'Ismail Chabane Profile Photo',
           },
         ],
       },
@@ -22,8 +22,8 @@ module.exports = {
       extras.push({
         loc: `/projects/${p.id}`,
         images: p.images.map((img) => ({
-          loc: `https://ismailchabane.com${img.src}`,
-          title: img.alt,
+          url: `https://ismailchabane.com${img.src}`,
+          caption: img.alt,
         })),
       });
     }
