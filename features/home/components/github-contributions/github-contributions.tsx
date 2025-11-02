@@ -9,7 +9,7 @@ import {
   ContributionGraphLegend,
   ContributionGraphTotalCount,
   type Activity,
-} from "@/components/kibo-ui/contribution-graph"
+} from "./kibo-ui-contribution-graph"
 import {
   Tooltip,
   TooltipContent,
