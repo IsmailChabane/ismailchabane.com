@@ -1,5 +1,5 @@
 import { Resend } from 'resend'
-import { ContactEmailTemplate } from '@/components/email-template'
+import { ContactEmailTemplate } from '@/features/shared/email-template'
 import type { ContactFormData } from '@/lib/validation/contact-schema'
 
 // Initialize Resend with API key from environment variables

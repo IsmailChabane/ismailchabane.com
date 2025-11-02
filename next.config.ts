@@ -4,10 +4,6 @@ import createMDX from '@next/mdx';
 const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Disable ESLint during build for existing warnings
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   // Image optimization configuration
   images: {
     remotePatterns: [

@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/features/shared/ui/button"
 import { ArrowRight } from "lucide-react"
 import { Project } from "@/lib/data/projects-data"
-import { AnimatedLink } from "@/components/shared/animated-link"
+import { AnimatedLink } from "@/features/shared/animated-link"
 
 interface ProjectCardProps {
   project: Project

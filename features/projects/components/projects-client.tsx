@@ -3,9 +3,9 @@
 import React, { useState, useMemo, useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import Lottie from "lottie-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/features/shared/ui/button"
 import { SearchBar } from "./search-bar"
-import { ProjectCard } from "@/app/(home)/_components/projects/project-card"
+import { ProjectCard } from "@/features/home/components/projects/project-card"
 import { Project } from "@/lib/data/projects-data"
 import nothingAnimation from "@/public/animations/nothing.json"
 

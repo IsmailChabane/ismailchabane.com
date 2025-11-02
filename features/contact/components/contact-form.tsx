@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useActionState, useEffect, useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { submitContactForm, ContactFormState } from '../actions'
+import { Button } from '@/features/shared/ui/button'
+import { submitContactForm, ContactFormState } from '@/features/contact/actions'
 import { toast } from 'sonner'
 import { User, Mail, Phone, MessageSquare, Send } from 'lucide-react'
 

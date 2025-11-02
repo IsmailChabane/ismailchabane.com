@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 
-const contentDirectory = path.join(process.cwd(), 'content', 'projects')
+const contentDirectory = path.join(process.cwd(), 'features', 'projects', 'content')
 
 export async function getMDXContent(projectId: string) {
   try {

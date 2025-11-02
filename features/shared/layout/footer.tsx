@@ -1,7 +1,7 @@
 import React from 'react'
 import { Mail, Linkedin, Github } from 'lucide-react'
 import Link from 'next/link'
-import { ShadowOverlay } from '../shared/shadow-overlay'
+import { ShadowOverlay } from '../shadow-overlay'
 
 export default function Footer() {
 

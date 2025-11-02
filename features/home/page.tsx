@@ -1,13 +1,13 @@
 "use client"
 
 import React, { useRef } from 'react'
-import Hero from './_components/hero/hero'
-import ProjectsSection from './_components/projects-section'
-import { SectionSeparator } from '@/components/shared/section-separator'
-import TechStack from './_components/tech-stack/tech-stack'
-import { WorkExperience } from '@/app/(home)/_components/experience/work-experience'
+import Hero from './components/hero/hero'
+import ProjectsSection from './components/projects-section'
+import { SectionSeparator } from '@/features/shared/section-separator'
+import TechStack from './components/tech-stack/tech-stack'
+import { WorkExperience } from '@/features/home/components/experience/work-experience'
 import { WORK_EXPERIENCE } from '@/lib/data/work-experience-data'
-import { ProjectsGrid } from './_components/projects/projects-grid'
+import { ProjectsGrid } from './components/projects/projects-grid'
 
 export default function HomePage() {
   const projectsHeaderRef = useRef<HTMLDivElement>(null)
@@ -37,4 +37,4 @@ export default function HomePage() {
       <ProjectsGrid />
       </>
   )
-} 
+}

@@ -4,7 +4,7 @@ import React from "react"
 import Link from "next/link"
 import { ProjectCard } from "./project-card"
 import { PROJECTS } from "@/lib/data/projects-data"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/features/shared/ui/button"
 import { ArrowRight } from "lucide-react"
 
 export function ProjectsGrid() {

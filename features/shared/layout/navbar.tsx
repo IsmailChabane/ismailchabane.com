@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react'
-import { ThemeToggleButton } from '@/components/shared/theme-toggle-button'
-import { Button } from '@/components/ui/button'
-import { AnimatedLink } from '@/components/shared/animated-link'
+import { ThemeToggleButton } from '@/features/shared/theme-toggle-button'
+import { Button } from '@/features/shared/ui/button'
+import { AnimatedLink } from '@/features/shared/animated-link'
 import Link from 'next/link';
 import { Home, FolderOpen, Mail } from 'lucide-react';
 

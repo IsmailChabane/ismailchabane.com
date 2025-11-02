@@ -1,4 +1,4 @@
-import type { ExperienceItemType } from "@/app/(home)/_components/experience/work-experience";
+import type { ExperienceItemType } from "@/features/home/components/experience/work-experience";
 
 export const WORK_EXPERIENCE: ExperienceItemType[] = [
   {
