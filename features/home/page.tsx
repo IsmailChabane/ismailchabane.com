@@ -8,7 +8,7 @@ import TechStack from './components/tech-stack/tech-stack'
 import { WorkExperience } from '@/features/home/components/experience/work-experience'
 import { WORK_EXPERIENCE } from '@/lib/data/work-experience-data'
 import { ProjectsGrid } from './components/projects/projects-grid'
-import { GitHubContributions } from './components/github-contributions/github-contributions'
+import { GitHubContributionsSection } from './components/github-contributions/github-contributions-section'
 
 interface HomePageProps {
   githubContributions: {
@@ -45,33 +45,14 @@ export default function HomePage({ githubContributions }: HomePageProps) {
       </SectionSeparator>
       <WorkExperience experiences={WORK_EXPERIENCE} className="mt-6" />
 
+      {/* GitHub Contributions Section */}
+      <GitHubContributionsSection githubContributions={githubContributions} />
+
       {/* Tech Stack Section */}
       <SectionSeparator className='mt-8' lineClassName='bg-border max-w-md mx-auto'>
         <h2 className="text-2xl italic font-serif">My Tech Stack</h2>
       </SectionSeparator>
       <TechStack />
-
-      {/* GitHub Contributions Section */}
-      {githubContributions && (
-        <>
-          <SectionSeparator className='mt-8' lineClassName='bg-border max-w-md mx-auto'>
-            <h2 className="text-2xl italic font-serif">GitHub Activity</h2>
-          </SectionSeparator>
-          <div className="mt-6">
-            <Suspense fallback={
-              <div className="w-full bg-card-2 rounded-[var(--radius)] border border-border p-6 animate-pulse">
-                <div className="h-4 bg-muted rounded w-1/3 mb-4"></div>
-                <div className="h-32 bg-muted rounded"></div>
-              </div>
-            }>
-              <GitHubContributions
-                totalContributions={githubContributions.totalContributions}
-                contributions={githubContributions.contributions}
-              />
-            </Suspense>
-          </div>
-        </>
-      )}
 
       {/* Projects Grid Section */}
       <SectionSeparator ref={projectsHeaderRef} className='mt-8' lineClassName='bg-border max-w-md mx-auto'>
