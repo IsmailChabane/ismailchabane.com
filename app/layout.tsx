@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     siteName: "Ismail Chabane Portfolio",
     images: [
       {
-        url: "/assets/ismailchabane.png",
+        url: "/assets/ismailchabaneSite.png",
         width: 1200,
         height: 630,
         alt: "Ismail Chabane - Full Stack Software Developer",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ismail Chabane | Full Stack Software Developer",
     description: "Professional portfolio showcasing full-stack development projects using React, Next.js, Java, and Spring Boot.",
-    images: ["/assets/ismailchabane.png"],
-    creator: "@ismailchabane",
+    images: ["/assets/ismailchabaneSite.png"],
+    creator: "@@Hx0dev",
   },
   icons: {
     icon: "/favicon.ico",
