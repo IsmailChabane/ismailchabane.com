@@ -1,15 +1,31 @@
 ## Project Overview
 
-Africkana Radio is a progressive web application designed to showcase and stream African music to a global audience. The platform combines modern web technologies with a deep appreciation for African musical heritage.
-## Key Features
+Africkana Radio is a progressive web application crafted to showcase and stream African music to a global audience. The experience begins with a richly designed interface that guides listeners through curated stations, editorial podcasts, and mood-based playlists while maintaining the fluidity expected from a modern media platform.
 
-- **Progressive Web App (PWA)**: Full offline capabilities allowing users to enjoy music even without internet connection
-- **Real-time Analytics**: Comprehensive dashboard providing insights into user engagement and music preferences
-- **Content Management**: Robust admin panel for managing music library, user accounts, and platform analytics
-- **Responsive Design**: Seamless experience across desktop, tablet, and mobile devices
+![Listener dashboard with curated stations](/work/africkana/websiteview1.png)
+
+## Platform Experience
+
+Platform administrators authenticate through a secure handoff from the landing experience to the operations workspace. Once signed in, they land on a server-rendered dashboard that surfaces live analytics, active listeners, and trending playlists in real time, enabling rapid programming decisions without refreshing the page. Everyday listeners remain on the public-facing front end, where curated collections and live stations are delivered without exposing administrative tooling.
+
+![Dashboard overview highlighting live metrics](/work/africkana/websiteviewdashboard.png)
+
+The admin suite extends into dedicated views for playlist management, ad inventory, and promotional content. Each table is optimized for quick scanning, instant filtering, and inline review, ensuring programmers can iterate on their catalog with minimal friction.
+
+![Playlist management table showing performance insights](/work/africkana/webisteviewdashboardtable.png)
+
+System settings are centralized in a maintenance console where operators can toggle availability, coordinate social integrations, and manage public messaging, keeping the platform responsive to programming needs.
+
+![Operations settings console](/work/africkana/websiteviewdashboardsettings.png)
+
+The listener-facing library delivers a rich journey that pairs editorial storytelling with effortless playback, completely separate from the admin environment. Our native browser and phone audio integration ensures streams continue reliably across devices, whether fans are on desktop or mobile web.
+
 ## Technical Implementation
-The application leverages Next.js for server-side rendering and optimal performance, with Firebase providing real-time database capabilities and user authentication. The PWA features are implemented using modern web APIs to ensure reliable offline functionality.
-## Challenges & Solutions
-One of the main challenges was implementing efficient music streaming while maintaining offline capabilities. This was solved by implementing a smart caching strategy that preloads popular tracks and allows users to download their favorite music for offline listening.
-## Impact
-The platform has successfully connected African artists with a global audience, providing a dedicated space for African music discovery and streaming.
+
+Africkana Radio is powered by Next.js with server-side rendering to deliver consistently fast initial loads and SEO-ready markup. We layer a selective caching strategy on top of SSR, preserving fresh data for time-sensitive routes while aggressively caching static sections to lower latency worldwide. Supabase handles authentication, real-time data synchronization, and analytics events, giving the dashboard its live feedback loops. Progressive Web App capabilities maintain access to previously visited sections when the network becomes unreliable, and the streaming stack leverages the Media Session API alongside custom audio controllers for resilient playback across browsers and handheld devices.
+
+![Authentication flow for platform users](/work/africkana/websitebviewlogin.png)
+
+## Impact and Roadmap
+
+Africkana Radio connects African artists with listeners everywhere by aligning editorial curation, real-time performance tracking, and reliable media streaming in a single platform. We are currently extending the experience to a dedicated React Native mobile application so fans can take Africkana Radio with them natively on iOS and Android.
