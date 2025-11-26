@@ -10,9 +10,12 @@ export async function sendContactEmail(data: ContactFormData) {
     throw new Error('Email service not configured')
   }
 
+  const fromEmail = process.env.EMAIL_FROM || 'contact@ismailchabane.com'
+  const toEmail = process.env.EMAIL_TO || 'ismailchabane2@gmail.com'
+
   const { error } = await resend.emails.send({
-    from: 'contact@ismailchabane.com',
-    to: ['ismailchabane2@gmail.com'],
+    from: fromEmail,
+    to: [toEmail],
     subject: `Portfolio Contact: ${data.subject}`,
     react: ContactEmailTemplate({
       name: data.name,
